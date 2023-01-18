@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebResume.API.Models;
 
 namespace WebResume.API.Controllers
 {
@@ -7,15 +8,20 @@ namespace WebResume.API.Controllers
     public class ExperiencesController : ControllerBase
     {
         [HttpGet]
-        public JsonResult GetExperiences()
+        public ActionResult<IEnumerable<ExperienceDto>> GetExperiences()
         {
-            return new JsonResult(ExperienceDataStore.Instance.Experiences);
+            return Ok(ExperienceDataStore.Instance.Experiences);
         }
 
         [HttpGet("{id}")]
-        public JsonResult GetExperienceById(Guid id) 
+        public ActionResult<ExperienceDto> GetExperienceById(Guid id) 
         {
-            return new JsonResult(ExperienceDataStore.Instance.Experiences.FirstOrDefault(x => x.ExperienceId == id));
+            var result = ExperienceDataStore.Instance.Experiences.FirstOrDefault(x => x.ExperienceId == id);
+            if(result== null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
     }
 }
