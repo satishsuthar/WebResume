@@ -4,7 +4,7 @@ using WebResume.API.Models;
 namespace WebResume.API.Controllers
 {
     [ApiController]
-    [Route("api/expereiences")]
+    [Route("api/experiences")]
     public class ExperiencesController : ControllerBase
     {
         [HttpGet]
