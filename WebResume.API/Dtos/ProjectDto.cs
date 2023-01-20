@@ -1,4 +1,4 @@
-﻿namespace WebResume.API.Models
+﻿namespace WebResume.API.Dtos
 {
     public class ProjectDto
     {
