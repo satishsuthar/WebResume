@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Microsoft.AspNetCore.Mvc;
+using WebResume.API.Dtos;
 using WebResume.API.Models;
 
 namespace WebResume.API.Controllers
@@ -7,10 +10,13 @@ namespace WebResume.API.Controllers
     [Route("api/experiences")]
     public class ExperiencesController : ControllerBase
     {
+
         [HttpGet]
-        public ActionResult<IEnumerable<ExperienceDto>> GetExperiences()
+        public async Task<IEnumerable<Experience>> GetExperiences()
         {
-            return Ok(ExperienceDataStore.Instance.Experiences);
+            IAmazonDynamoDB dynamoDbClient = new AmazonDynamoDBClient();
+            DynamoDBContext _dynamoDBContext = new DynamoDBContext(dynamoDbClient);
+            return await _dynamoDBContext.ScanAsync<Experience>(new List<ScanCondition>()).GetRemainingAsync();
         }
 
         [HttpGet("{id}")]

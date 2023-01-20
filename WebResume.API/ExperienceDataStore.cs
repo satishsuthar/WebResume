@@ -1,4 +1,4 @@
-﻿using WebResume.API.Models;
+﻿using WebResume.API.Dtos;
 
 namespace WebResume.API
 {

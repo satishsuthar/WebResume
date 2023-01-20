@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebResume.API.Dtos;
 using WebResume.API.Models;
 
 namespace WebResume.API.Controllers
