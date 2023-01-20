@@ -2,28 +2,31 @@
 using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using WebResume.API.Dtos;
-using WebResume.API.Models;
-
+using WebResume.Application.Contracts.Persistence;
+using WebResume.Domain.Entities;
 namespace WebResume.API.Controllers
 {
     [ApiController]
     [Route("api/experiences")]
     public class ExperiencesController : ControllerBase
     {
-
-        [HttpGet]
-        public async Task<IEnumerable<Experience>> GetExperiences()
+        private readonly IExperienceRepository _experienceRepository;
+        public ExperiencesController(IExperienceRepository experienceRepository)
         {
-            IAmazonDynamoDB dynamoDbClient = new AmazonDynamoDBClient();
-            DynamoDBContext _dynamoDBContext = new DynamoDBContext(dynamoDbClient);
-            return await _dynamoDBContext.ScanAsync<Experience>(new List<ScanCondition>()).GetRemainingAsync();
+            _experienceRepository = experienceRepository;
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Experience>>> GetExperiences()
+        {
+
+            return Ok(await _experienceRepository.ListAllAsync());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ExperienceDto> GetExperienceById(Guid id) 
+        public async Task<ActionResult<Experience>> GetExperienceById(Guid id) 
         {
-            var result = ExperienceDataStore.Instance.Experiences.FirstOrDefault(x => x.ExperienceId == id);
-            if(result== null)
+            var result = await _experienceRepository.GetByIdAsync(id);
+            if (result== null)
             {
                 return NotFound();
             }

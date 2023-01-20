@@ -1,37 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebResume.API.Dtos;
-using WebResume.API.Models;
+using WebResume.Application.Contracts.Persistence;
 
 namespace WebResume.API.Controllers
 {
-    [Route("/api/experiences/{experienceId}/projects")]    
-    [ApiController]
-    public class ProjectsController : ControllerBase
+    //Since project is aggregate child and it's root is experience. As per DDD, the DDD is the only member of the AGGREGATE that outside
+    //objects are allowed to hold reference. So all projects should only be accessed via experience object.
+    public class ProjectsController
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<ProjectDto>> GetProjects(Guid experienceId)
-        {
-            var experience = ExperienceDataStore.Instance.Experiences.FirstOrDefault(x => x.ExperienceId == experienceId);
-            if(experience == null)
-            {
-                return NotFound();
-            }
-            return Ok(experience.Projects);
-        }
-        [HttpGet("{projectId}")]
-        public ActionResult<ProjectDto> GetProject(Guid experienceId, Guid projectId) 
-        {
-            var experience = ExperienceDataStore.Instance.Experiences.FirstOrDefault(x => x.ExperienceId == experienceId);
-            if (experience == null)
-            {
-                return NotFound();
-            }
-            var project = experience.Projects.FirstOrDefault(p => p.ProjectId == projectId);
-            if(project == null)
-            {
-                return NotFound();
-            }
-            return Ok(project);
-        }
+
+        
     }
 }

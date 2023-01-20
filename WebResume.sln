@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResume.API", "WebResume.API\WebResume.API.csproj", "{028000CF-3515-419B-8C66-141368FC11E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebResume.API", "WebResume.API\WebResume.API.csproj", "{028000CF-3515-419B-8C66-141368FC11E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DCCCE387-9AF0-4044-9BD9-8199C406E8A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResume.Domain", "WebResume.Domain\WebResume.Domain.csproj", "{33226FAC-F239-48C9-9027-0DF8EDD603BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResume.Application", "WebResume.Application\WebResume.Application.csproj", "{C3B4E305-191D-4ADB-9088-258D39C035C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D5A66946-D6B7-4640-BDC1-F80B86AFD55E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResume.Persistence", "WebResume.Persistence\WebResume.Persistence.csproj", "{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,26 @@ Global
 		{028000CF-3515-419B-8C66-141368FC11E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{028000CF-3515-419B-8C66-141368FC11E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{028000CF-3515-419B-8C66-141368FC11E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33226FAC-F239-48C9-9027-0DF8EDD603BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33226FAC-F239-48C9-9027-0DF8EDD603BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33226FAC-F239-48C9-9027-0DF8EDD603BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33226FAC-F239-48C9-9027-0DF8EDD603BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B4E305-191D-4ADB-9088-258D39C035C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B4E305-191D-4ADB-9088-258D39C035C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B4E305-191D-4ADB-9088-258D39C035C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B4E305-191D-4ADB-9088-258D39C035C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{33226FAC-F239-48C9-9027-0DF8EDD603BC} = {DCCCE387-9AF0-4044-9BD9-8199C406E8A9}
+		{C3B4E305-191D-4ADB-9088-258D39C035C9} = {DCCCE387-9AF0-4044-9BD9-8199C406E8A9}
+		{DB6ECD9D-CF2F-4008-BCA0-A4ECCAD29947} = {D5A66946-D6B7-4640-BDC1-F80B86AFD55E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4BF96AA-919D-49E7-B0A3-7B9337F1DA6A}
